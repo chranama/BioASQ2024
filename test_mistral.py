@@ -13,7 +13,7 @@ text = training_yesno.body.iloc[0]
 
 subprocess.run('chmod -x token/set_token.sh', shell=True)
 subprocess.run('./token/set_token.sh', shell=True)
-subprocess.run('docker run --gpus all -e HF_TOKEN=$HF_TOKEN -p 8000:8000 ghcr.io/mistralai/mistral-src/vllm:latest --host 0.0.0.0 --model mistralai/Mistral-7B-Instruct-v0.2', shell=True)
+subprocess.run('docker run --gpus all -e HF_TOKEN=$HF_TOKEN --name model -p 8000:8000 ghcr.io/mistralai/mistral-src/vllm:latest --host 0.0.0.0 --model mistralai/Mistral-7B-Instruct-v0.2', shell=True)
 
 parameters={'model':'mistral-large-latest', 'messages': [{'role': 'user', 'content': text}]}
 start = time.time()
